@@ -1516,9 +1516,12 @@ CLEAN_DIRS  += $(MODVERDIR) \
 	       $(foreach d, spl tpl, $(patsubst %,$d/%, \
 			$(filter-out include, $(shell ls -1 $d 2>/dev/null))))
 
-CLEAN_FILES += include/bmp_logo.h include/bmp_logo_data.h \
-	       boot* u-boot* MLO* SPL System.map fit-dtb.blob *.bin *.img *.gz .cc
+BIN_FILES := $(filter-out tee.bin,$(wildcard *.bin))
 
+CLEAN_FILES += include/bmp_logo.h include/bmp_logo_data.h \
+	       boot* u-boot* MLO* SPL System.map fit-dtb.blob \
+	       $(BIN_FILES) *.img *.gz .cc
+		   
 # Directories & files removed with 'make mrproper'
 MRPROPER_DIRS  += include/config include/generated spl tpl \
 		  .tmp_objdiff
