@@ -16,7 +16,6 @@
 *.lst
 *.order
 *.swp
-*.bin
 *.patch
 *.cfgtmp
 *.img
